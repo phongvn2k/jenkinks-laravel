@@ -6,9 +6,13 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/phongvn2k/jenkinks-laravel.git'
             }
         }
-        stage('Clone 2') {
+        stage('build') {
             steps {
-                git branch: 'main', url: 'https://github.com/phongvn2k/jenkinks-laravel.git'
+                def laravelDir = '/var/www/jenkins/jenkinks-larave-jenkinks/jenkinks-laravel/'
+
+                dir(laravelDir) {
+                    sh 'composer install'
+                }
             }
         }
     }
